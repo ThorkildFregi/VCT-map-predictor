@@ -38,4 +38,4 @@ Run ``main.py``.
 
 **Utilisation**
 
-After running ``main.py``, go to http://127.0.0.1/5000. Automatically, the application will begin the creation of the data and the training of the model. When he finishes, you gonna have the front page where you can predictthe map. Have fun !
+After running ``main.py``, go to http://127.0.0.1/5000. Automatically, the application will begin the creation of the data and the training of the model. When he finishes, you gonna have the front page where you can predict the winner of the map. Have fun !
