@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading...</title>
+
+    <link href="https://1000logos.net/wp-content/uploads/2022/09/Valorant-Emblem.png" rel="icon"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/css/uikit.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <div class="uk-container uk-align-center uk-flex uk-flex-center uk-flex-middle" uk-height-viewport="expand: true">
+        <div>
+            <img src="/static/gif jett.gif">
+            <p>by u/quelm_nossfe</p>
+            <h1 class="uk-text-center">LOADING...</h1>
+        </div>
+    </div>
+</body>
+{% if next_page == "train_model" %}
+<script> window.location.replace('{{url_for("train_model")}}'); </script>
+{% elif next_page == "update_data" %}
+<script> window.location.replace('{{url_for("update_data")}}'); </script>
+{% endif %}
+</html>
