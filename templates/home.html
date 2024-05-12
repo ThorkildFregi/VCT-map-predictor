@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Home</title>
 
-    <link href="https://1000logos.net/wp-content/uploads/2022/09/Valorant-Emblem.png" rel="icon"/>
+    <link href="https://seeklogo.com/images/V/valorant-logo-3D72D9117F-seeklogo.com.png" rel="icon"/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/css/uikit.min.css" />
 
@@ -18,13 +18,23 @@
             <form action="{{url_for('prediction')}}" method="POST">
                 <label>Tournament</label>
                 <select id="tournament" name="tournament" class="uk-select uk-margin-bottom" aria-label="Select">
+                    <option value="">Please select tournament...</option>
                     {% for tournament in tournaments %}
                     <option>{{tournament}}</option>
                     {% endfor %}
                 </select>
                 <br>
+                <label>Map</label>
+                <select id="map" name="map" class="uk-select uk-margin-bottom" aria-label="Select">
+                    <option value="">Please select map...</option>
+                    {% for map in maps %}
+                    <option>{{map}}</option>
+                    {% endfor %}
+                </select>
+                <br>
                 <label>Team A</label>
                 <select id="team_a" name="team_a" class="uk-select uk-margin-bottom" aria-label="Select">
+                    <option value="">Please select team A...</option>
                     {% for team_a in team_A %}
                     <option>{{team_a}}</option>
                     {% endfor %}
@@ -32,6 +42,7 @@
                 <br>
                 <label>Team B</label>
                 <select id="team_b" name="team_b" class="uk-select uk-margin-bottom" aria-label="Select">
+                    <option value="">Please select team B...</option>
                     {% for team_b in team_B %}
                     <option>{{team_b}}</option>
                     {% endfor %}
