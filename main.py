@@ -10,14 +10,17 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     if "data.csv" not in os.listdir():
-        return redirect(url_for("update_data"))
+        return redirect(url_for("loading_update_data"))
     elif "model.sav" not in os.listdir():
-        return redirect(url_for("train_model"))
+        return redirect(url_for("loading_train_model"))
     else:
         df = pd.read_csv("data.csv")
 
         tournaments_df = df["Tournament"]
         tournaments = list(pd.unique(tournaments_df))
+
+        maps_df = df["Map"]
+        maps = list(pd.unique(maps_df))
 
         team_A_df = df["Team A"]
         team_A = list(pd.unique(team_A_df))
@@ -27,16 +30,16 @@ def home():
 
         agents = ["Astra", "Breach", "Brimstone", "Chamber", "Clove", "Cypher", "Deadlock", "Fade", "Gekko", "Harbor", "Iso", "Jett", "Kayo", "Killjoy", "Neon", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru"]
 
-        return render_template("home.html", tournaments=tournaments, team_A=team_A, team_B=team_B, agents=agents)
+        return render_template("home.html", tournaments=tournaments, maps=maps, team_A=team_A, team_B=team_B, agents=agents)
 
 @app.route('/update-data')
 def update_data():
     create_data()
-    return redirect(url_for("home"))
+    return redirect(url_for("loading_train_model"))
 
 @app.route('/loading-update-data')
 def loading_update_data():
-    return render_template("loading.html", next_page="update_data")
+    return render_template("loading.html", next_page="update_data", loading_mission="Updating data...")
 
 @app.route('/train-model')
 def train_model():
@@ -45,12 +48,13 @@ def train_model():
 
 @app.route('/loading-train-model')
 def loading_train_model():
-    return render_template("loading.html", next_page="train_model")
+    return render_template("loading.html", next_page="train_model", loading_mission="Training model...")
 
 @app.route('/prediction', methods=["post", "get"])
 def prediction():
     if request.method == "POST":
         tournament = request.form["tournament"]
+        map = request.form["map"]
         team_a = request.form["team_a"]
         team_b = request.form["team_b"]
         ta_agents_list = sorted(request.form["ta_agents"].split())
@@ -75,11 +79,11 @@ def prediction():
         train_data = pd.read_csv("data.csv")
         model = pickle.load(open("model.sav", 'rb'))
 
-        features = ["Tournament", "Team A", "Team B", "TA Agents", "TB Agents"]
+        features = ["Tournament", "Map", "Team A", "Team B", "TA Agents", "TB Agents"]
 
         x = pd.get_dummies(train_data[features])
 
-        data_test = {"Tournament": [tournament], "Team A": [team_a], "Team B": [team_b], "TA Agents": [ta_agents], "TB Agents": [tb_agents]}
+        data_test = {"Tournament": [tournament], "Map": [map], "Team A": [team_a], "Team B": [team_b], "TA Agents": [ta_agents], "TB Agents": [tb_agents]}
         test_data = pd.DataFrame(data=data_test)
         x_test = pd.get_dummies(test_data[features])
 
