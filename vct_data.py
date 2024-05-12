@@ -20,7 +20,7 @@ def create_data():
 
     events_html = soup_events.find_all("a", {"class": "wf-card mod-flex event-item"})
 
-    data = {"Tournament": [], "Match ID": [], "Team A": [], "Team B": [], "Map ID": [], "TA Agents": [], "TB Agents": [], "Result": []}
+    data = {"Tournament": [], "Match ID": [], "Team A": [], "Team B": [], "Map ID": [], "Map": [], "TA Agents": [], "TB Agents": [], "Result": []}
 
     events_id = []
     events_name = []
@@ -106,6 +106,14 @@ def create_data():
 
                     vm_stats_game = soup_map.find_all("div", {"class": "vm-stats-game mod-active"})
 
+                    map_html = vm_stats_game[0].find_all("div", {"class": "map"})
+
+                    map_text = map_html[0].find_all("span", {"style": "position: relative;"})[0].text.split()
+
+                    map = map_text[0]
+
+                    print("Map : " + map)
+
                     agents_html = vm_stats_game[0].find_all("span", {"class": "stats-sq mod-agent small"})
 
                     i = 0
@@ -143,6 +151,7 @@ def create_data():
                         data["Team A"].append(team_a)
                         data["Team B"].append(team_b)
                         data["Map ID"].append(map_id)
+                        data["Map"].append(map)
                         data["TA Agents"].append(ta_agents)
                         data["TB Agents"].append(tb_agents)
                         data["Result"].append(result)
