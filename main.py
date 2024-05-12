@@ -105,5 +105,11 @@ def prediction():
     else:
         return redirect(url_for("home"))
 
+@app.route('/uploads/model.sav')
+def download_model():
+    path = os.path.dirname(__file__)
+
+    return send_from_directory(path, "model.sav")
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=7860, debug=True)
