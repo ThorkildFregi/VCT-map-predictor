@@ -44,6 +44,6 @@ After running ``main.py``, go to http://127.0.0.1/5000. Automatically, the appli
 
 **Test it**
 
-If you want to test it got to <a href="https://huggingface.co/spaces/ThorkildFregi/Wikidata-image-classifier"> this space </a>
+If you want to test it got to <a href="https://huggingface.co/spaces/ThorkildFregi/VCT-map-predictor/"> this space </a>
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
