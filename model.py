@@ -6,7 +6,7 @@ import pickle
 def create_model():
     train_data = pd.read_csv("data.csv")
 
-    features = ["Tournament", "Team A", "Team B", "TA Agents", "TB Agents"]
+    features = ["Tournament", "Team A", "Team B", "Map", "TA Agents", "TB Agents"]
 
     x = pd.get_dummies(train_data[features])
     y = train_data["Result"]
