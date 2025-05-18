@@ -19,7 +19,7 @@ Create a new environment with conda or venv in python 3.
 Clone the repositery in your project's file
 
 ```bash
-git clone https://github.com/ThorkildFregi/wikidata-image-classifier/
+git clone https://github.com/ThorkildFregi/VCT-map-predictor/
 ```
 
 *Step 3 :*
