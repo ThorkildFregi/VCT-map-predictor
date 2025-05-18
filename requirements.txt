@@ -1,4 +1,7 @@
 flask
 scikit-learn
 pandas
-beautifulsoup
+beautifulsoup4
+requests
+valorantproapi
+tqdm
